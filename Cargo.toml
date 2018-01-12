@@ -6,4 +6,9 @@ license = "MIT/Apache-2.0"
 description = "Rust library for detecting OS bitness independently of the executable's bitness. Currently only Windows is supported."
 
 [dependencies]
+
+[target.'cfg(windows)'.dependencies]
 winapi = { version = "~0.3.3", features = ["sysinfoapi"] }
+
+[target.'cfg(unix)'.dependencies]
+uname = "~0.1.1"

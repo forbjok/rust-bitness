@@ -3,12 +3,15 @@ name = "bitness"
 version = "0.1.0"
 authors = ["Kjartan F. Kvamme <forbjok@gmail.com>"]
 license = "MIT/Apache-2.0"
-description = "Rust library for detecting OS bitness independently of the executable's bitness. Currently only Windows is supported."
+description = "Rust library for detecting OS bitness independently of the executable's bitness. Windows, GNU/Linux and FreeBSD currently supported."
 
 [dependencies]
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "~0.3.3", features = ["sysinfoapi"] }
 
-[target.'cfg(unix)'.dependencies]
+[target.'cfg(all(unix, not(target_os = "freebsd")))'.dependencies]
 uname = "~0.1.1"
+
+[target.'cfg(target_os = "freebsd")'.dependencies]
+sysctl = "~0.1.4"

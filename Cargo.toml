@@ -1,6 +1,6 @@
 [package]
 name = "bitness"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["Kjartan F. Kvamme <forbjok@gmail.com>"]
 license = "MIT/Apache-2.0"
 description = "Rust library for detecting OS bitness independently of the executable's bitness. Windows, GNU/Linux and FreeBSD currently supported."

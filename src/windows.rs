@@ -1,5 +1,3 @@
-use winapi;
-
 use super::*;
 
 /// Get the OS's bitness independently of the executable's bitness.

@@ -4,6 +4,7 @@ version = "0.3.1"
 authors = ["Kjartan F. Kvamme <forbjok@gmail.com>"]
 license = "MIT/Apache-2.0"
 description = "Rust library for detecting OS bitness independently of the executable's bitness. Windows, GNU/Linux and FreeBSD currently supported."
+repository = "https://github.com/forbjok/rust-bitness"
 
 [dependencies]
 failure = "~0.1.1"

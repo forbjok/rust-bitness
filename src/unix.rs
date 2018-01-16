@@ -10,14 +10,14 @@ use super::*;
 ///
 /// # Examples
 /// ```
-/// let bitness = bitness::os_bitness();
+/// let bitness = bitness::os_bitness().unwrap();
 /// ```
-pub fn os_bitness() -> Bitness {
-    let info = uname::uname().unwrap();
+pub fn os_bitness() -> BitnessResult<Bitness> {
+    let info = uname::uname()?;
 
-    match info.machine.as_ref() {
+    Ok(match info.machine.as_ref() {
         "i686" => Bitness::X86_32,
         "x86_64" => Bitness::X86_64,
         _ => Bitness::Unknown,
-    }
+    })
 }

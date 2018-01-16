@@ -10,13 +10,13 @@ use super::*;
 ///
 /// # Examples
 /// ```
-/// let bitness = bitness::os_bitness();
+/// let bitness = bitness::os_bitness().unwrap();
 /// ```
-pub fn os_bitness() -> Bitness {
+pub fn os_bitness() -> BitnessResult<Bitness> {
     /* Use kern.supported_archs, as hw.machine only returns the architecture of the executable. */
-    let supported_archs = sysctl::value("kern.supported_archs").unwrap();
+    let supported_archs = sysctl::value("kern.supported_archs")?;
 
-    if let sysctl::CtlValue::String(supported_archs) = supported_archs {
+    Ok(if let sysctl::CtlValue::String(supported_archs) = supported_archs {
         if supported_archs.split(" ").any(|m| m == "amd64") {
             Bitness::X86_64
         }
@@ -29,5 +29,5 @@ pub fn os_bitness() -> Bitness {
     }
     else {
         Bitness::Unknown
-    }
+    })
 }

@@ -1,5 +1,13 @@
 extern crate bitness;
 
 fn main() {
-    println!("{:?}", bitness::os_bitness());
+    use std::process;
+
+    match bitness::os_bitness() {
+        Ok(bn) => println!("{:?}", bn),
+        Err(err) => {
+            eprintln!("{}", err.to_string());
+            process::exit(2);
+        }
+    };
 }

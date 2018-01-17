@@ -4,8 +4,8 @@ use super::*;
 
 /// Get the OS's bitness independently of the executable's bitness.
 ///
-/// This means if the user is running a 64-bit OS, os_bitness()
-/// will return Bitness::X86_64 regardless of whether the executable is compiled
+/// This means if the user is running a 64-bit OS, `os_bitness()`
+/// will return `Bitness::X86_64` regardless of whether the executable is compiled
 /// for x86 or x86-64.
 ///
 /// # Examples
@@ -17,10 +17,10 @@ pub fn os_bitness() -> BitnessResult<Bitness> {
     let supported_archs = sysctl::value("kern.supported_archs")?;
 
     Ok(if let sysctl::CtlValue::String(supported_archs) = supported_archs {
-        if supported_archs.split(" ").any(|m| m == "amd64") {
+        if supported_archs.split(' ').any(|m| m == "amd64") {
             Bitness::X86_64
         }
-        else if supported_archs.split(" ").any(|m| m == "i386") {
+        else if supported_archs.split(' ').any(|m| m == "i386") {
             Bitness::X86_32
         }
         else {

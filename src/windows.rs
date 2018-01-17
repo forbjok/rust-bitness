@@ -2,8 +2,8 @@ use super::*;
 
 /// Get the OS's bitness independently of the executable's bitness.
 ///
-/// This means if the user is running a 64-bit OS, os_bitness()
-/// will return Bitness::X86_64 regardless of whether the executable is compiled
+/// This means if the user is running a 64-bit OS, `os_bitness()`
+/// will return `Bitness::X86_64` regardless of whether the executable is compiled
 /// for x86 or x86-64.
 ///
 /// # Examples

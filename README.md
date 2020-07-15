@@ -5,11 +5,14 @@ Rust library for detecting OS bitness independently of the executable's bitness.
 ## How to use
 
 ```rust
-let bitness = bitness::os_bitness().unwrap();
-
-match bitness {
-  Bitness::X86_32 => println!("We're 32-bit!"),
-  Bitness::X86_64 => println!("We're 64-bit!"),
-  _ => { }
-}
+match bitness::os_bitness() {
+  Ok(bitness) => {
+      match bitness {
+          bitness::Bitness::X86_32 => println!("We're 32-bit!"),
+          bitness::Bitness::X86_64 => println!("We're 64-bit!"),
+          bitness::Bitness::Unknown => println!("We're Unknown!")
+          }
+      },
+  Err(_) => println!("We have an error")
+  }
 ```

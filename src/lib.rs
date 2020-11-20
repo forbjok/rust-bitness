@@ -1,18 +1,18 @@
-#[cfg(windows)]
-mod windows;
-#[cfg(all(unix, not(target_os = "freebsd")))]
-mod unix;
 #[cfg(target_os = "freebsd")]
 mod freebsd;
+#[cfg(all(unix, not(target_os = "freebsd")))]
+mod unix;
+#[cfg(windows)]
+mod windows;
 
 mod error;
 
-#[cfg(windows)]
-pub use windows::*;
-#[cfg(all(unix, not(target_os = "freebsd")))]
-pub use unix::*;
 #[cfg(target_os = "freebsd")]
 pub use freebsd::*;
+#[cfg(all(unix, not(target_os = "freebsd")))]
+pub use unix::*;
+#[cfg(windows)]
+pub use windows::*;
 
 pub use error::*;
 

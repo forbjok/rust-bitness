@@ -12,8 +12,8 @@ use super::*;
 /// ```
 pub fn os_bitness() -> Result<Bitness, BitnessError> {
     use std::mem;
-    use winapi::um::sysinfoapi::{GetNativeSystemInfo, SYSTEM_INFO, SYSTEM_INFO_u_s};
-    use winapi::um::winnt::{PROCESSOR_ARCHITECTURE_INTEL, PROCESSOR_ARCHITECTURE_AMD64};
+    use winapi::um::sysinfoapi::{GetNativeSystemInfo, SYSTEM_INFO_u_s, SYSTEM_INFO};
+    use winapi::um::winnt::{PROCESSOR_ARCHITECTURE_AMD64, PROCESSOR_ARCHITECTURE_INTEL};
 
     // Allocate zeroed SYSTEM_INFO struct
     let mut system_info: SYSTEM_INFO = unsafe { mem::zeroed() };

@@ -22,15 +22,12 @@ pub fn os_bitness() -> Result<Bitness, BitnessError> {
     Ok(if let sysctl::CtlValue::String(supported_archs) = supported_archs {
         if supported_archs.split(' ').any(|m| m == "amd64") {
             Bitness::X86_64
-        }
-        else if supported_archs.split(' ').any(|m| m == "i386") {
+        } else if supported_archs.split(' ').any(|m| m == "i386") {
             Bitness::X86_32
-        }
-        else {
+        } else {
             Bitness::Unknown
         }
-    }
-    else {
+    } else {
         Bitness::Unknown
     })
 }

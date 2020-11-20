@@ -5,7 +5,7 @@ mod unix;
 #[cfg(target_os = "freebsd")]
 mod freebsd;
 
-mod result;
+mod error;
 
 #[cfg(windows)]
 pub use windows::*;
@@ -14,7 +14,7 @@ pub use unix::*;
 #[cfg(target_os = "freebsd")]
 pub use freebsd::*;
 
-pub use result::*;
+pub use error::*;
 
 #[derive(Debug, PartialEq)]
 pub enum Bitness {

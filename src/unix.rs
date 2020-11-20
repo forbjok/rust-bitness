@@ -12,7 +12,7 @@ use super::*;
 /// ```
 /// let bitness = bitness::os_bitness().unwrap();
 /// ```
-pub fn os_bitness() -> BitnessResult<Bitness> {
+pub fn os_bitness() -> Result<Bitness, BitnessError> {
     let info = uname::uname()?;
 
     Ok(match info.machine.as_ref() {

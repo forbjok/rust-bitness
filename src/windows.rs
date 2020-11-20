@@ -10,7 +10,7 @@ use super::*;
 /// ```
 /// let bitness = bitness::os_bitness().unwrap();
 /// ```
-pub fn os_bitness() -> BitnessResult<Bitness> {
+pub fn os_bitness() -> Result<Bitness, BitnessError> {
     use std::mem;
     use winapi::um::sysinfoapi::{GetNativeSystemInfo, SYSTEM_INFO, SYSTEM_INFO_u_s};
     use winapi::um::winnt::{PROCESSOR_ARCHITECTURE_INTEL, PROCESSOR_ARCHITECTURE_AMD64};

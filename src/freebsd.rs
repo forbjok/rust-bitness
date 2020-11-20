@@ -12,7 +12,7 @@ use super::*;
 /// ```
 /// let bitness = bitness::os_bitness().unwrap();
 /// ```
-pub fn os_bitness() -> BitnessResult<Bitness> {
+pub fn os_bitness() -> Result<Bitness, BitnessError> {
     /* Use kern.supported_archs, as hw.machine only returns the architecture of the executable. */
     let supported_archs = sysctl::value("kern.supported_archs")?;
 

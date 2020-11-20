@@ -1,4 +1,4 @@
-use sysctl;
+use sysctl::Sysctl;
 
 use super::*;
 
@@ -14,7 +14,10 @@ use super::*;
 /// ```
 pub fn os_bitness() -> Result<Bitness, BitnessError> {
     /* Use kern.supported_archs, as hw.machine only returns the architecture of the executable. */
-    let supported_archs = sysctl::value("kern.supported_archs")?;
+    let supported_archs = {
+        let ctl = sysctl::Ctl::new("kern.supported_archs").map_err(|err| BitnessError::Sysctl(err.to_string()))?;
+        ctl.value().map_err(|err| BitnessError::Sysctl(err.to_string()))?
+    };
 
     Ok(if let sysctl::CtlValue::String(supported_archs) = supported_archs {
         if supported_archs.split(' ').any(|m| m == "amd64") {

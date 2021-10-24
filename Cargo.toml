@@ -2,7 +2,7 @@
 name = "bitness"
 version = "0.4.0"
 authors = ["Kjartan F. Kvamme <forbjok@gmail.com>"]
-edition = "2018"
+edition = "2021"
 license = "MIT/Apache-2.0"
 description = "Rust library for detecting OS bitness independently of the executable's bitness. Windows, GNU/Linux and FreeBSD currently supported."
 repository = "https://github.com/forbjok/rust-bitness"
